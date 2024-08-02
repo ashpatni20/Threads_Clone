@@ -71,13 +71,13 @@ function PostNewModel({ showModal, setShowModal, setNewPost }) {
                   />
                 </div>
                 <div className="flex justify-between items-center mb-4">
-                  <div className="flex gap-2">
+                  <div className="">
                     <button
                       type="button"
                       className="p-2 bg-gray-700 rounded-full hover:bg-gray-600"
                       onClick={() => document.getElementById('fileInput').click()}
                     >
-                      <CiImageOn />
+                      {/* <CiImageOn /> */}
                     </button>
                     <div>
               <input
