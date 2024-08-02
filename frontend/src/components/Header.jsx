@@ -7,9 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { ThreadContext } from "../main";
 import apiClient from "../utils/apiClient";
-
-// import HomePost from './HomePost';
-
+import Cookies from 'js-cookie'; // Ensure this is imported
 
 const Header = () => {
   const navigate = useNavigate();
@@ -19,19 +17,17 @@ const Header = () => {
   const goToProfile = () => {
     navigate(`/profile/${loggedInUser}`);
   };
+
   const handleLogout = async () => {
     try {
-      apiClient.get(`/users/logout`)
-      .then((res) => {
-        console.log(res);
-        Cookies.remove("token");
-      navigate("/" , {replace: true});
-      })
-      
+      const res = await apiClient.get(`/users/logout`);
+      console.log(res);
+      Cookies.remove("token");
+      navigate("/", { replace: true });
     } catch (error) {
-      console.log(error);
+      console.error("Logout failed: ", error);
     }
-  }
+  };
 
   return (
     <div className="bg-[#101010] w-20 h-screen fixed top-0 left-0 flex flex-col items-center justify-between py-6">
@@ -39,12 +35,12 @@ const Header = () => {
         <img src={logo} alt="Logo" className="w-10" />
       </div>
       <div className="text-[#777777] flex flex-col items-center space-y-10">
-        <GoHome className="text-4xl cursor-pointer hover:text-white" onClick={() => navigate("/home")}/>
+        <GoHome className="text-4xl cursor-pointer hover:text-white" onClick={() => navigate("/home")} />
         <FiSearch className="text-4xl cursor-pointer hover:text-white" />
-        <FaRegUser className="text-4xl cursor-pointer hover:text-white" onClick={goToProfile}/>
+        <FaRegUser className="text-4xl cursor-pointer hover:text-white" onClick={goToProfile} />
       </div>
-      <div className="text-[#777777] flex flex-col items-center space-y-4" onClick={()=>handleLogout()}>
-        <IoLogOutOutline className="text-4xl cursor-pointer hover:text-white" />
+      <div className="text-[#777777] flex flex-col items-center space-y-4" >
+        <IoLogOutOutline className="text-4xl cursor-pointer hover:text-white" onClick={()=>handleLogout()} />
       </div>
     </div>
   );

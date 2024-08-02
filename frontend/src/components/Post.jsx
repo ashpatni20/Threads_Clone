@@ -87,8 +87,8 @@ const Post = ({ data }) => {
               )}
                {" "}{likeCountState}
             </span>
-            <span>💬 </span>
-            <span>🔄 </span>
+            {/* <span>💬 </span>
+            <span>🔄 </span> */}
           </div>
         </div>
       </div>
