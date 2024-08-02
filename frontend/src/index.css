@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-color: #101010;
+    color: #ffffff;
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .file-input {
+    display: none;
+  }
+
+  .file-input-label {
+    text-align: center;
+    line-height: 70px;
+    cursor: pointer;
+    /* font-size: 24px;  */
+  }
